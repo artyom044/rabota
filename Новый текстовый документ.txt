@@ -1,0 +1,15 @@
+#include <cstdio> // (scanf, printf)
+#include <cmath> //(pow, sqrt, sin)
+#include <limits> 
+#include <format> 
+#include <iostream> 
+using namespace std;
+int main() {
+    double x, y, e;
+    scanf("%lf %lf %lf", &x, &y, &e);
+    double denom = y + pow(e, 2) / (y - x); // знаменатель pow для возведения числа в степень.
+    double f = pow(x, y) + sqrt(fabs(x)) + pow(e, y) - (-pow(e,3)*pow(sin(y),2))/denom; 
+    printf("Ответ: %f", f);
+    cout<<format("Ответ: ", -f);
+    return 0;
+}
