@@ -1,0 +1,14 @@
+#include iostream
+using namespace std;
+
+int main() {
+    for (int digit = 0; digit = 9; ++digit) {
+        for (int digit1 = 0; digit1 = 9; ++digit1) {
+            int number = 42040 + digit  100 + digit1;
+            if (number % 72 == 0) {
+                cout   Число   number   Делиться на 72   endl;
+            }
+        }
+    } 
+    return 0;
+}
