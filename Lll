@@ -1,0 +1,81 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    double x, y;
+    int dayNumber;
+
+    // Ввод данных для вычисления
+    std::cout << "Введите x: ";
+    std::cin >> x;
+
+    std::cout << "Введите y: ";
+    std::cin >> y;
+
+    // Определение min(0, x) без std::min
+    double min_0_x;
+    if (0.0 < x) {
+        min_0_x = 0.0;
+    } else {
+        min_0_x = x;
+    }
+
+    // Определение min(0, y) без std::min
+    double min_0_y;
+    if (0.0 < y) {
+        min_0_y = 0.0;
+    } else {
+        min_0_y = y;
+    }
+
+    // Определение max(y, x) без std::max
+    double max_y_x;
+    if (y > x) {
+        max_y_x = y;
+    } else {
+        max_y_x = x;
+    }
+
+    // Вычисление результата
+    double denominator = max_y_x * max_y_x;
+    double result;
+
+    if (denominator != 0) {
+        result = (min_0_x - min_0_y) / denominator;
+    } else {
+        std::cout << "Деление на ноль невозможно." << std::endl;
+        return 1; // Завершение с ошибкой
+    }
+
+    // Вывод результата
+    std::cout << "Результат вычисления: " << result << std::endl;
+
+    // Ввод номера дня недели
+    std::cout << "Введите номер дня недели (1-7): ";
+    std::cin >> dayNumber;
+
+    // Определение дня недели через if-else
+    std::string dayName;
+    if (dayNumber == 1) {
+        dayName = "Monday";
+    } else if (dayNumber == 2) {
+        dayName = "Tuesday";
+    } else if (dayNumber == 3) {
+        dayName = "Wednesday";
+    } else if (dayNumber == 4) {
+        dayName = "Thursday";
+    } else if (dayNumber == 5) {
+        dayName = "Friday";
+    } else if (dayNumber == 6) {
+        dayName = "Saturday";
+    } else if (dayNumber == 7) {
+        dayName = "Sunday";
+    } else {
+        dayName = "Invalid day number";
+    }
+
+    // Вывод названия дня
+    std::cout << "День недели: " << dayName << std::endl;
+
+    return 0;
+}
