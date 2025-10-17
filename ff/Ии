@@ -1,0 +1,63 @@
+#include <iostream>
+#include <limits>
+#include <cstdlib> // для rand() и srand()
+#include <ctime>   // для time()
+
+using namespace std;
+
+int main() {
+    srand(time(0)); // инициализация генератора случайных чисел
+
+    // Массив из 10 чисел
+    double R[10];
+    for (int i = 0; i < 10; ++i) {
+        R[i] = -25 + (rand() / (double)RAND_MAX) * 50; // случайное число (-25..25)
+    }
+
+    // Находим минимальное положительное и максимальное отрицательное
+    double minPos = numeric_limits<double>::max();
+    double maxNeg = -numeric_limits<double>::max();
+    bool hasPos = false, hasNeg = false;
+
+    for (int i = 0; i < 10; ++i) {
+        double num = R[i];
+        if (num > 0) {
+            hasPos = true;
+            if (num < minPos) minPos = num;
+        } else if (num < 0) {
+            hasNeg = true;
+            if (num > maxNeg) maxNeg = num;
+        }
+    }
+
+    // Создаём матрицу 5x5
+    double B[5][5];
+    for (int i = 0; i < 5; ++i)
+        for (int j = 0; j < 5; ++j)
+            B[i][j] = -25 + (rand() / (double)RAND_MAX) * 50;
+
+    // Считаем сумму под диагональю и всю сумму
+    double sumBelowDiagonal = 0, totalSum = 0;
+    for (int i = 0; i < 5; ++i){
+        for (int j = 0; j < 5; ++j){
+            totalSum += B[i][j];
+            if (i > j) sumBelowDiagonal += B[i][j];
+        }
+    }
+
+    // Выводим результаты
+    if (hasPos)
+        cout << "Минимальное положительное число: " << minPos << endl;
+    else
+        cout << "Положительных чисел нет.\n";
+
+    if (hasNeg)
+        cout << "Максимальное отрицательное число: " << maxNeg << endl;
+    else
+        cout << "Отрицательных чисел нет.\n";
+
+    cout << "Сумма элементов под диагональю: " << sumBelowDiagonal << endl;
+    cout << "Общая сумма матрицы: " << totalSum << endl;
+
+    return 0;
+}
