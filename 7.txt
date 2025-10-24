@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void aaa (int k, int l, int m){
+    double a = max(max((double)(k*k), 1.0), sqrt(m));
+    double b = max(max(pow(3, m), 1.0), (double)(k+l));
+    
+    cout << "k = " << k << ", l = " << l << ", m = " << m << endl;
+    cout << "a = " << a << ", b = " << b << endl;
+}
+
+int main(){
+    int k, l, m;
+    cout << "¬ведите значениe k: ";
+    cin >> k;
+    cout<<endl;
+    cout << "¬ведите значениe l: ";
+    cin >> l;
+    cout<<endl;
+    cout << "¬ведите значениe m: ";
+    cin >> m;
+    cout<<endl;
+    aaa(k,l,m);
+   
+
+    return 0;
+}
