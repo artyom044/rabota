@@ -24,4 +24,49 @@ int main() {
     std::cout << std::endl;
 
     return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string text;
+    std::cout << "Введите текст: ";
+    std::getline(std::cin, text);
+    
+    int counts[256] = {0};
+
+    for (char c : text) {
+        int n = int(c);
+        counts[n]++;
+    }
+    
+    for (int i = 0; i < 256; ++i) {
+        if (counts[i] > 0) {
+            std::cout << "Символ " << char(i) << " встречается " << counts[i] << " раз(а)\n";
+        }
+    }
+
+    return 0;
 }
