@@ -1,54 +1,5 @@
 #include <iostream>
 #include <string>
-#include <map>
-
-int main() {
-    std::string text;
-    std::cout << "Введите текст: ";
-    std::getline(std::cin, text);
-
-    // отображение для подсчета количества каждого символа
-    std::map<char, int> countMap;
-
-    for (char c : text) {
-        countMap[c]++;
-    }
-
-    // Проходим по строке и выводим только те символы, которые встречаются один раз
-    std::cout << "Символы, встречающиеся в тексте ровно один раз: ";
-    for (char c : text) {
-        if (countMap[c] == 1) {
-            std::cout << c << ' ';
-        }
-    }
-    std::cout << std::endl;
-
-    return 0;
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#include <iostream>
-#include <string>
 
 int main() {
     std::string text;
