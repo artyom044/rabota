@@ -1,0 +1,67 @@
+#include <iostream>
+#include <climits> // для INT_MIN и INT_MAX
+
+using namespace std;
+
+int main() {
+    // Задача а: поиск минимального положительного и максимального отрицательного элемента массива R
+    const int size = 10; // примерный размер массива
+    int R[size];
+
+    // Заполняем массив случайными числами для примера
+    cout << "Введите " << size << " элементов массива R:\n";
+    for (int i = 0; i < size; i++) {
+        cin >> R[i];
+    }
+
+    int minPositive = INT_MAX; // для минимального положительного
+    int maxNegative = INT_MIN; // для максимального отрицательного
+
+    for (int i = 0; i < size; i++) {
+        if (R[i] > 0 && R[i] < minPositive) {
+            minPositive = R[i];
+        }
+        if (R[i] < 0 && R[i] > maxNegative) {
+            maxNegative = R[i];
+        }
+    }
+
+    if (minPositive == INT_MAX)
+        cout << "Положительных элементов нет.\n";
+    else
+        cout << "Минимальный положительный элемент: " << minPositive << endl;
+
+    if (maxNegative == INT_MIN)
+        cout << "Отрицательных элементов нет.\n";
+    else
+        cout << "Максимальный отрицательный элемент: " << maxNegative << endl;
+
+    // Задача б: работа с матрицей B[5][5]
+    int B[5][5];
+
+    // Заполняем матрицу
+    cout << "Введите элементы матрицы B 5x5:\n";
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            cin >> B[i][j];
+        }
+    }
+
+    int sumBelowDiagonal = 0; // сумма элементов под главной диагональю
+    int sumOnDiagonal = 0;    // сумма элементов на главной диагонали
+
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (i == j) {
+                sumOnDiagonal += B[i][j]; // на диагонали
+            } else if (i > j) {
+                sumBelowDiagonal += B[i][j]; // под диагональю
+            }
+        }
+    }
+
+    cout << "Сумма элементов под главной диагональю: " << sumBelowDiagonal << endl;
+    cout << "Сумма элементов на главной диагонали: " << sumOnDiagonal << endl;
+
+    return 0;
+}
