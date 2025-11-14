@@ -1,21 +1,19 @@
 #include <iostream>
-#include <climits> // для INT_MIN и INT_MAX
+#include <climits>
 
 using namespace std;
 
 int main() {
-    // Задача а: поиск минимального положительного и максимального отрицательного элемента массива R
-    const int size = 10; // примерный размер массива
+    const int size = 10;
     int R[size];
 
-    // Заполняем массив случайными числами для примера
     cout << "Введите " << size << " элементов массива R:\n";
     for (int i = 0; i < size; i++) {
         cin >> R[i];
     }
 
-    int minPositive = INT_MAX; // для минимального положительного
-    int maxNegative = INT_MIN; // для максимального отрицательного
+    int minPositive = INT_MAX;
+    int maxNegative = INT_MIN;
 
     for (int i = 0; i < size; i++) {
         if (R[i] > 0 && R[i] < minPositive) {
@@ -36,10 +34,8 @@ int main() {
     else
         cout << "Максимальный отрицательный элемент: " << maxNegative << endl;
 
-    // Задача б: работа с матрицей B[5][5]
     int B[5][5];
 
-    // Заполняем матрицу
     cout << "Введите элементы матрицы B 5x5:\n";
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
@@ -47,15 +43,15 @@ int main() {
         }
     }
 
-    int sumBelowDiagonal = 0; // сумма элементов под главной диагональю
-    int sumOnDiagonal = 0;    // сумма элементов на главной диагонали
+    int sumBelowDiagonal = 0;
+    int sumOnDiagonal = 0; 
 
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             if (i == j) {
-                sumOnDiagonal += B[i][j]; // на диагонали
+                sumOnDiagonal += B[i][j];
             } else if (i > j) {
-                sumBelowDiagonal += B[i][j]; // под диагональю
+                sumBelowDiagonal += B[i][j];
             }
         }
     }
