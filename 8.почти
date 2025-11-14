@@ -3,7 +3,6 @@
 
 using namespace std;
 
-// Определяем структуру сотрудника
 struct Employee {
     string name;
     int age;
@@ -11,10 +10,9 @@ struct Employee {
 };
 
 int main() {
-    const int size = 5; // Размер массива сотрудников
+    const int size = 3;
     Employee employees[size];
 
-    // Ввод данных о сотрудниках
     for (int i = 0; i < size; i++) {
         cout << "Введите имя сотрудника #" << i + 1 << ": ";
         cin >> employees[i].name;
@@ -29,19 +27,20 @@ int main() {
     cout << "Введите имя сотрудника для поиска: ";
     cin >> searchName;
 
-    bool found = false;
+    bool foundAny = false; // флаг, есть ли совпадения
+
     for (int i = 0; i < size; i++) {
         if (employees[i].name == searchName) {
             cout << "Найден сотрудник:\n";
             cout << "Имя: " << employees[i].name << endl;
             cout << "Возраст: " << employees[i].age << endl;
             cout << "Должность: " << employees[i].position << endl;
-            found = true;
-            break;
+            cout << "--------------------------\n";
+            foundAny = true;
         }
     }
 
-    if (!found) {
+    if (!foundAny) {
         cout << "Сотрудник с именем " << searchName << " не найден.\n";
     }
 
