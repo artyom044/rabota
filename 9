@@ -1,0 +1,64 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+struct Employee {
+    string name;
+    int age;
+    string position;
+};
+
+int main() {
+    const int size = 3;
+    Employee employees[size];
+
+    // Открываем файл для чтения данных о сотрудниках
+    ifstream inputFile("file1.txt");
+    if (!inputFile) {
+        cerr << "Ошибка открытия файла для чтения.\n";
+        return 1;
+    }
+
+    // Читаем данные из файла
+    for (int i = 0; i < size; i++) {
+        getline(inputFile, employees[i].name);
+        inputFile >> employees[i].age;
+        inputFile.ignore(); // игнорируем символ перевода строки после числа
+        getline(inputFile, employees[i].position);
+    }
+    inputFile.close();
+
+    string searchName;
+    cout << "Введите имя сотрудника для поиска: ";
+    cin >> searchName;
+
+    // Открываем файл для записи результатов
+    ofstream outputFile("file2.txt");
+    if (!outputFile) {
+        cerr << "Ошибка открытия файла для записи.\n";
+        return 1;
+    }
+
+    bool foundAny = false;
+
+    for (int i = 0; i < size; i++) {
+        if (employees[i].name == searchName) {
+            outputFile << "Найден сотрудник:\n";
+            outputFile << "Имя: " << employees[i].name << "\n";
+            outputFile << "Возраст: " << employees[i].age << "\n";
+            outputFile << "Должность: " << employees[i].position << "\n";
+            outputFile << "--------------------------\n";
+            foundAny = true;
+        }
+    }
+
+    if (!foundAny) {
+        outputFile << "Сотрудник с именем " << searchName << " не найден.\n";
+    }
+
+    outputFile.close();
+
+    return 0;
+}
