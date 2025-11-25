@@ -1,0 +1,103 @@
+2. 
+#include <iostream> 
+#include <cstdlib> 
+#include <ctime> 
+
+using namespace std; 
+const int SIZE = 10;  // размер массива 
+const int MAX_VALUE = 90;  // максимальное значение элементов 
+
+int main() { 
+    int arr[SIZE]; 
+    int sumEven = 0, productOdd = 1, countEven = 0, countOdd = 0; 
+    // Инициализация генератора случайных чисел 
+    srand(time(0)); 
+    cout << "=== ОБРАБОТКА ОДНОМЕРНОГО МАССИВА ===" << endl; 
+    cout << endl; 
+    // Заполнение массива случайными числами 
+    cout << "Заполнение массива случайными числами до " << MAX_VALUE << ":" << endl; 
+    for (int i = 0; i < SIZE; i++) { 
+        arr[i] = rand() % (MAX_VALUE + 1); 
+        cout << "arr[" << i << "] = " << arr[i] << endl; 
+    } 
+    cout << endl; 
+    // Вывод массива 
+    cout << "Сформированный массив: "; 
+    cout << "["; 
+    for (int i = 0; i < SIZE; i++) { 
+        cout << arr[i]; 
+        if (i < SIZE - 1) cout << ", "; 
+    } 
+
+    cout << "]" << endl; 
+    cout << endl; 
+    // Обработка массива - подсчет суммы четных и произведения нечетных элементов 
+    cout << "Обработка массива:" << endl; 
+    for (int i = 0; i < SIZE; i++) { 
+        cout << "i = " << i << ", arr[" << i << "] = " << arr[i]; 
+        
+        if (arr[i] % 2 == 0) { 
+            // Четный элемент 
+            sumEven += arr[i]; 
+            countEven++; 
+            cout << " - четный, сумма = " << sumEven << ", количество = " << countEven; 
+
+        } else { 
+            // Нечетный элемент 
+            productOdd *= arr[i]; 
+            countOdd++; 
+            cout << " - нечетный, произведение = " << productOdd << ", количество = " << countOdd; 
+        } 
+        cout << endl; 
+    } 
+
+    cout << endl; 
+    // Вывод результатов 
+    cout << "=== РЕЗУЛЬТАТЫ ОБРАБОТКИ ===" << endl; 
+    cout << "Сумма четных элементов: " << sumEven << endl; 
+    cout << "Количество четных элементов: " << countEven << endl; 
+    cout << "Произведение нечетных элементов: " << productOdd << endl; 
+    cout << "Количество нечетных элементов: " << countOdd << endl; 
+    return 0; 
+} 
+
+
+3.
+#include <iostream> 
+#include <iomanip> 
+
+using namespace std; 
+int main() { 
+
+    int n = 10; 
+    // Создание матрицы 10x10 
+    int matrix[10][10]; 
+    // Заполнение матрицы 
+    for (int i = 0; i < n; i++) { 
+        for (int j = 0; j < n; j++) { 
+            if (i + j < n - 1) { 
+                matrix[i][j] = i + 1; 
+            } else if (i + j == n - 1) { 
+                matrix[i][j] = i + 1; 
+            } else { 
+                matrix[i][j] = 0; 
+            } 
+        } 
+    } 
+    // Вывод матрицы 10x10 
+    cout << "\nМатрица 10x10:" << endl; 
+    for (int i = 0; i < n; i++) { 
+        for (int j = 0; j < n; j++) { 
+            cout << setw(2) << matrix[i][j] << " "; 
+        } 
+        cout << endl; 
+    } 
+    // Проверка нескольких элементов 
+    cout << "\nПроверка элементов:" << endl; 
+    cout << "matrix[0][0] = " << matrix[0][0] << " (должно быть 1)" << endl; 
+    cout << "matrix[1][8] = " << matrix[1][8] << " (должно быть 2)" << endl; 
+    cout << "matrix[5][4] = " << matrix[5][4] << " (должно быть 6)" << endl; 
+    cout << "matrix[9][9] = " << matrix[9][9] << " (должно быть 0)" << endl; 
+
+    return 0; 
+}
