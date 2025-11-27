@@ -9,12 +9,12 @@ const int MAX_VALUE = 90;  // максимальное значение элем
 
 int main() { 
     int arr[SIZE]; 
-    int sumEven = 0, productOdd = 1, countEven = 0, countOdd = 0; 
+    int sumEven = 0, productOdd = 1, countEven = 0, countOdd = 0;  // sum - четных, produ - нечетных 
     // Инициализация генератора случайных чисел 
     srand(time(0)); 
     cout << "=== ОБРАБОТКА ОДНОМЕРНОГО МАССИВА ===" << endl; 
     cout << endl; 
-    // Заполнение массива случайными числами 
+    // Заполнение случайными числами 
     cout << "Заполнение массива случайными числами до " << MAX_VALUE << ":" << endl; 
     for (int i = 0; i < SIZE; i++) { 
         arr[i] = rand() % (MAX_VALUE + 1); 
@@ -36,7 +36,7 @@ int main() {
     for (int i = 0; i < SIZE; i++) { 
         cout << "i = " << i << ", arr[" << i << "] = " << arr[i]; 
         
-        if (arr[i] % 2 == 0) { 
+        if (arr[i] % 2 == 0) { // проверка на четность
             // Четный элемент 
             sumEven += arr[i]; 
             countEven++; 
